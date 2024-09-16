@@ -25,6 +25,11 @@ app.use(cookieParser())
 app.use('/admin', admin)
 app.use('/users', user);
 
+
+app.length('/',(req, res) => {
+    res.send("This is the home page")
+})
+
 app.listen(port, () => {
     console.log(`app running on port ${port}`)
 });
