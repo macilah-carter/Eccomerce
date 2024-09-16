@@ -1,7 +1,10 @@
 const express = require('express');
 const Admin = require('../../Database/schema/admin');
+const Users = require('../../Database/schema/user')
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
+const verifyAdmin = require('./adminAuth')
+
 
 
 const jwt_secret = "mysecret"
@@ -14,6 +17,12 @@ router.get('/',(req,res) => {
     console.log('admin get');
     return res.status(200).json({message: "All good"})
 });
+
+router.get('/users',verifyAdmin,async(req,res) => {
+    const users = await Users.find();
+    return res.status(200).json({message: "All users",users})
+});
+
 
 router.post('/signup',async(req, res) => {
     const {name, password, email, role} = req.body;
