@@ -26,7 +26,7 @@ app.use('/admin', admin)
 app.use('/users', user);
 
 
-app.length('/',(req, res) => {
+app.get('/',(req, res) => {
     res.send("This is the home page")
 })
 
