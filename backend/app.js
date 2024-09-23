@@ -27,8 +27,6 @@ app.use('/users', user);
 
 
 app.get('/',(req, res) => {
-    const uri = process.env.DATABASE_URL
-    console.log(uri)
     res.send("This is the home page")
 })
 
