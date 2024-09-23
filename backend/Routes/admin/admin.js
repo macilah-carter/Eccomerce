@@ -39,11 +39,11 @@ router.post('/signup',async(req, res) => {
         let message;
         if(error.errors && error.errors.email){
             message = error.errors.email.message;
-            return res.status(201).json({message: message});
+            return res.status(400).json({message: message});
         }
         else if(error.errors && error.errors.password){
             message = error.errors.password.message;
-            return res.status(201).json({message: message});
+            return res.status(400).json({message: message});
         } else{
             console.log(error.message);
             return res.status(500).json({message: error.message});
@@ -59,11 +59,11 @@ router.post('/login', async(req, res) => {
         }
         const admin = await Admin.findOne({email});
         if(!admin){
-            return res.status(201).json({message:"Admin does not exist"});
+            return res.status(400).json({message:"Admin does not exist"});
         }
         const dehashPass = await bcrypt.compare(password, admin.password);
         if(!dehashPass){
-            return res.status(201).json({message:"The passsword did not match the email"})
+            return res.status(400).json({message:"The passsword did not match the email"})
         }
         const token = jwt.sign({adminId: admin._id, role: admin.role}, jwt_secret, {
             expiresIn:"1hr"
