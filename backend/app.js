@@ -28,7 +28,8 @@ app.use('/users', user);
 
 app.get('/',(req, res) => {
     const uri = process.env.DATABASE_URL
-    res.send("This is the home page", uri)
+    console.log(uri)
+    res.send("This is the home page")
 })
 
 app.listen(port, () => {
