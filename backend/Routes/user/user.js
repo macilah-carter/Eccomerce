@@ -30,11 +30,11 @@ router.post('/signup', async(req, res) => {
         let message;
         if(error.errors && error.errors.email){
         message = error.errors.email.message
-        return res.status(200).json({msg:message})
+        return res.status(400).json({msg:message})
         }
         else if(error.errors && error.errors.password){
         message = error.errors.password.message
-        return res.status(200).json({msg:message})
+        return res.status(400).json({msg:message})
         }else{
         console.log('the error',error)
         return res.status(500).json({msg:error.message})
