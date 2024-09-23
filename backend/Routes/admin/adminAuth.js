@@ -10,7 +10,7 @@ const verifyAdmin = (req, res, next) => {
             return res.status(301).json({message: "Access denied you lack credential for admin"});
         }
         const decoded = jwt.verify(token, jwt_secret);
-        if(decoded.role !== 'admin'){
+        if(decoded.role !== 'Admin'){
             return res.status(301).json({message: "Access denied you are not admin"});
         }
         req.adminId = decoded.adminId;
