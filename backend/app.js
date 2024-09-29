@@ -8,7 +8,8 @@ const cookieParser = require('cookie-parser');
 const cors = require('cors');
 const session = require('express-session');
 const passport = require('passport');
-const auth = require('./Routes/AuthConfigs/auth')
+const oauthSetup = require('./Routes/google/config')
+const auth = require('./Routes/google/configRoute')
 
 const app = express();
 const port = process.env.PORT;

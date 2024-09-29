@@ -10,7 +10,9 @@ const userSchema = new mongoose.Schema({
     },
     email: {
         type: String,
-        required: true,
+        required: function(){
+            return !this.googleID
+        },
         unique: true,
         validate: {
             validator: isEmail,
@@ -19,8 +21,13 @@ const userSchema = new mongoose.Schema({
     },
     password: {
         type: String,
-        required: true,
+        required: function(){
+            return !this.googleID
+        },
         minlength: [8, 'Password must be at least 8 characters long'],
+    },
+    googleID:{
+        type: String
     }
 });
 
