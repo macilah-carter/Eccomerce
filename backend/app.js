@@ -32,6 +32,11 @@ app.use(session({
     saveUninitialized:true,
     cookie: {secure: false}
 }));
+
+
+console.log('CLIENTID:', process.env.CLIENTID);
+console.log('CLIENTSECRET:', process.env.CLIENTSECRET);
+
 app.use(passport.initialize());
 app.use(passport.session())
 
