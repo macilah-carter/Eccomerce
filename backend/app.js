@@ -7,7 +7,8 @@ const admin = require('./Routes/admin/admin');
 const cookieParser = require('cookie-parser');
 const cors = require('cors');
 const session = require('express-session');
-const passport = require('passport')
+const passport = require('passport');
+const auth = require('./Routes/AuthConfigs/auth')
 
 const app = express();
 const port = process.env.PORT;
@@ -35,6 +36,7 @@ app.use(passport.session())
 
 app.use('/admin', admin)
 app.use('/users', user);
+app.use('/auth', auth)
 
 
 app.get('/',(req, res) => {
