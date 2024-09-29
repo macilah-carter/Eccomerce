@@ -6,7 +6,7 @@ passport.use(
         //options for strategy
         clientID: process.env.CLIENTID,
         clientSecret:process.env.CLIENTSECRET,
-        callbackURL:"/auth/google/callback"
+        callbackURL:process.env.CALLBACK
     },
     async (accessToken, refreshToken, profile, done) => {
         //passport callback function
